@@ -27,7 +27,7 @@ jobs:
            sdkmanager --sdk_root=$ANDROID_HOME --install "platforms;android-31" "build-tools;31.0.0"
            yes | sdkmanager --sdk_root=$ANDROID_HOME --licenses
       - name: Build APK
-        run: ./gradle build
+        run: ./gradlew build
       
       - name: Upload Artifacts
         uses: actions/upload-artifact@v3
