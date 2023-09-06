@@ -10,22 +10,6 @@ jobs:
       - uses: actions/checkout@v3
         with: 
           submodules: recursive
-      
-      - name: Install Dependencies
-        run: |
-          sudo apt update
-          sudo apt install ant android-sdk-platform-tools-common android-sdk ninja-build
-      - name: Export ANDROID_HOME
-        run: export ANDROID_HOME="/usr/src/android-sdk"
-      - name: Install Android CLI Tools
-        run: |
-           wget https://dl.google.com/android/repository/commandlinetools-linux-6609375_latest.zip
-           unzip commandlinetools-linux-6609375_latest.zip -d cmdline-tools
-           mkdir --parents "$ANDROID_HOME/cmdline-tools/latest"
-           sudo mv cmdline-tools/* "$ANDROID_HOME/cmdline-tools/latest/"
-           export PATH=$ANDROID_HOME/cmdline-tools/latest/bin:$PATH
-           sdkmanager --sdk_root=$ANDROID_HOME --install "platforms;android-31" "build-tools;31.0.0"
-           yes | sdkmanager --sdk_root=$ANDROID_HOME --licenses
       - name: Build APK
         run: ./gradlew build
       
