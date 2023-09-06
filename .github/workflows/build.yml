@@ -1,0 +1,26 @@
+name: Build for Android
+
+on: push
+
+jobs:
+  apk-linux:
+    name: APK Build (Linux)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+        with: 
+          submodules: recursive
+      - uses: actions/setup-java@v3
+        with:
+          distribution: temurin
+          java-version: 17
+      - name: Build APK
+        run: ./gradlew build
+      
+      - name: Upload Artifacts
+        uses: actions/upload-artifact@v3
+        with: 
+          name: DebugReleaseAPKs
+          path: app/build/outputs/apk/*
+
+    
