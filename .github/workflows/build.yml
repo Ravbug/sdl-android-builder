@@ -14,7 +14,7 @@ jobs:
       - name: Install Dependencies
         run: |
           sudo apt update
-          sudo apt install openjdk-8-jdk ant android-sdk-platform-tools-common android-sdk ninja-build
+          sudo apt install openjdk-17-jdk openjdk-17-jre ant android-sdk-platform-tools-common android-sdk ninja-build
       - name: Export ANDROID_HOME
         run: export ANDROID_HOME="/usr/src/android-sdk"
       - name: Install Android CLI Tools
