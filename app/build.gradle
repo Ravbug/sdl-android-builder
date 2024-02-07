@@ -13,16 +13,16 @@ android {
     }
     compileSdkVersion 34
     defaultConfig {
-        minSdkVersion 19
+        minSdkVersion 32
         targetSdkVersion 34
         versionCode 1
         versionName "1.0"
         externalNativeBuild {
             ndkBuild {
-                arguments "APP_PLATFORM=android-19"
+                arguments "APP_PLATFORM=android-32"
             }
             cmake {
-                arguments "-DANDROID_APP_PLATFORM=android-19", "-DANDROID_STL=c++_static"
+                arguments "-DANDROID_APP_PLATFORM=android-32", "-DANDROID_STL=c++_static"
             }
         }
     }
