@@ -18,11 +18,8 @@ android {
         versionCode 1
         versionName "1.0"
         externalNativeBuild {
-            ndkBuild {
-                arguments "APP_PLATFORM=android-32"
-            }
             cmake {
-                arguments "-DANDROID_APP_PLATFORM=android-32", "-DANDROID_STL=c++_static"
+                arguments "-DANDROID_STL=c++_static"
             }
         }
     }
