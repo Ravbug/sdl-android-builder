@@ -1,0 +1,31 @@
+name: Update-Project
+on:  workflow_dispatch
+
+jobs:
+  update-project:
+    name: Update Project
+    runs-on: ubuntu-latest
+    steps:
+      - name: Announce repo
+        run: echo ${{ github.event.inputs.name }}
+      - name: Checkout code
+        uses: actions/checkout@v3
+        with:
+          submodules: true
+      - name: Execute
+        run: |
+          git clone https://github.com/libsdl-org/SDL --depth=1
+          rm -r app/src
+          mv SDL/android-project/app/src app/src
+          rm -rf SDL/
+      - name: git config
+        run: |
+          git config user.name github-actions[bot]
+          git config user.email 22283943+github-actions[bot]@users.noreply.github.com
+          git stash
+          git pull
+          git stash pop
+      - name: git commit
+        run: git add output.json && git commit -m "Update android-project"
+      - name: git push
+        run: git push origin HEAD:master
