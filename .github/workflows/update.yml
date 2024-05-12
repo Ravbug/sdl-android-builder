@@ -5,6 +5,8 @@ jobs:
   update-project:
     name: Update Project
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
     steps:
       - name: Announce repo
         run: echo ${{ github.event.inputs.name }}
@@ -17,6 +19,7 @@ jobs:
           git clone https://github.com/libsdl-org/SDL --depth=1
           rm -r app/src
           mv SDL/android-project/app/src app/src
+          mv SDL/android-project/app/proguard-rules.pro app/src/
           rm -rf SDL/
       - name: git config
         run: |
