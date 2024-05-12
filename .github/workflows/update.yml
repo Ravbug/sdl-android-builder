@@ -26,6 +26,6 @@ jobs:
           git pull
           git stash pop
       - name: git commit
-        run: git add output.json && git commit -m "Update android-project"
+        run: git add . && git commit -m "Update android-project"
       - name: git push
         run: git push origin HEAD:master
