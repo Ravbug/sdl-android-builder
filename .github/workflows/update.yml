@@ -19,7 +19,7 @@ jobs:
           git clone https://github.com/libsdl-org/SDL --depth=1
           rm -r app/src
           mv SDL/android-project/app/src app/src
-          mv SDL/android-project/app/proguard-rules.pro app/src/
+          mv SDL/android-project/app/proguard-rules.pro app/
           rm -rf SDL/
       - name: git config
         run: |
