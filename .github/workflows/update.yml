@@ -31,4 +31,4 @@ jobs:
       - name: git commit
         run: git add . && git commit -m "Update android-project"
       - name: git push
-        run: git push origin HEAD:master
+        run: git push origin HEAD:main
