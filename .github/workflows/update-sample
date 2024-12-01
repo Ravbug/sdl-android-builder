@@ -1,0 +1,31 @@
+name: Update-Sample
+on:  workflow_dispatch
+
+jobs:
+  update-project:
+    name: Update Sample
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Announce repo
+        run: echo ${{ github.event.inputs.name }}
+      - name: Checkout code
+        uses: actions/checkout@v3
+        with:
+          submodules: recursive
+      - name: Execute
+        run: |
+           cd to-build/sdl3-sample
+           git pull --recurse-submodules
+      - name: git config
+        run: |
+          git config user.name github-actions[bot]
+          git config user.email 22283943+github-actions[bot]@users.noreply.github.com
+          git stash
+          git pull
+          git stash pop
+      - name: git commit
+        run: git add . && git commit -m "Update android-project"
+      - name: git push
+        run: git push origin HEAD:main
