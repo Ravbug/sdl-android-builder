@@ -2,7 +2,7 @@ name: Update-Sample
 on:  workflow_dispatch
 
 jobs:
-  update-project:
+  update-sample:
     name: Update Sample
     runs-on: ubuntu-latest
     permissions:
