@@ -17,7 +17,8 @@ jobs:
       - name: Execute
         run: |
            cd to-build/sdl3-sample
-           git pull --recurse-submodules
+           git config pull.rebase false
+           git pull
       - name: git config
         run: |
           git config user.name github-actions[bot]
